@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nora Cojocea-Neagoie — Aerospace Engineering & Data Science</title>
+<meta name="description" content="Portfolio of Nora Cojocea-Neagoie: aerospace engineering, data science, adaptive landing gear research, and NASA program work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1120;
+    --surface:#101a2e;
+    --surface-2:#16223a;
+    --line:#233052;
+    --text:#e7ecf5;
+    --muted:#8fa0bc;
+    --accent:#34d0b6;
+    --accent-dim:#1f6f63;
+    --warm:#f2a93b;
+    --maxw:760px;
+    --wide:1080px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  img{max-width:100%; display:block;}
+  ::selection{background:var(--accent); color:#062521;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .wrap-wide{max-width:var(--wide); margin:0 auto; padding:0 24px;}
+  section{padding:96px 0;}
+  @media (max-width:640px){ section{padding:64px 0;} }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 24px; backdrop-filter:blur(10px);
+    background:rgba(10,17,32,0.72);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease;
+  }
+  nav.scrolled{border-color:var(--line);}
+  .nav-name{font-family:'Space Grotesk'; font-weight:600; font-size:1.05rem;}
+  .nav-links{display:flex; gap:28px; font-size:0.92rem; color:var(--muted);}
+  .nav-links a{text-decoration:none; transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-toggle{display:none;}
+  @media (max-width:640px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-top:120px;
+    position:relative;
+    overflow:hidden;
+  }
+  .horizon-wrap{
+    position:absolute; inset:0; z-index:0; opacity:0.55;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .horizon-wrap svg{width:min(1000px,140vw); height:auto;}
+  .hero-inner{position:relative; z-index:1;}
+  .hero-grid{
+    display:grid; grid-template-columns:1fr auto; gap:56px; align-items:center;
+  }
+  .hero-photo{
+    width:220px; height:220px; border-radius:16px; overflow:hidden;
+    border:1px solid var(--line); box-shadow:0 0 0 6px rgba(52,208,182,0.08);
+    justify-self:end;
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover;}
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr; gap:32px;}
+    .hero-photo{width:150px; height:150px; justify-self:start; order:-1;}
+  }
+  .eyebrow{
+    color:var(--accent); font-size:0.85rem; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent);}
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.05;
+    max-width:20ch;
+  }
+  .hero p.lede{
+    margin-top:26px; max-width:52ch; color:var(--muted); font-size:1.15rem;
+  }
+  .hero-actions{display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;}
+  .btn{
+    padding:13px 26px; border-radius:6px; font-size:0.95rem; font-weight:500;
+    text-decoration:none; transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    display:inline-block;
+  }
+  .btn-primary{background:var(--accent); color:#062521;}
+  .btn-primary:hover{transform:translateY(-2px); background:#4fe0c8;}
+  .btn-ghost{border:1px solid var(--line); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent); transform:translateY(-2px);}
+
+  .hero-stats{
+    display:grid; grid-template-columns:repeat(3,auto); gap:48px;
+    margin-top:76px; padding-top:32px; border-top:1px solid var(--line);
+    max-width:fit-content;
+  }
+  @media (max-width:640px){ .hero-stats{grid-template-columns:1fr 1fr; gap:28px 36px;} }
+  .stat-num{font-family:'IBM Plex Mono'; font-size:1.6rem; color:var(--accent);}
+  .stat-label{font-size:0.82rem; color:var(--muted); margin-top:4px;}
+
+  /* ---------- Section headings ---------- */
+  .sec-head{margin-bottom:48px;}
+  .sec-index{font-family:'IBM Plex Mono'; color:var(--accent); font-size:0.85rem; margin-bottom:10px; display:block;}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.3rem);}
+
+  /* ---------- About ---------- */
+  .about p{color:var(--muted); font-size:1.08rem; max-width:64ch;}
+  .about p + p{margin-top:18px;}
+  .about strong{color:var(--text); font-weight:500;}
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{border-left:1px solid var(--line); margin-left:6px;}
+  .tl-item{position:relative; padding:0 0 40px 32px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:''; position:absolute; left:-5.5px; top:4px;
+    width:10px; height:10px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--accent);
+  }
+  .tl-date{font-family:'IBM Plex Mono'; font-size:0.8rem; color:var(--accent); margin-bottom:6px; display:block;}
+  .tl-item h3{font-size:1.15rem; margin-bottom:2px;}
+  .tl-org{color:var(--muted); font-size:0.95rem; margin-bottom:10px;}
+  .tl-item ul{margin:0; padding-left:18px; color:var(--muted); font-size:0.96rem;}
+  .tl-item li + li{margin-top:6px;}
+
+  /* ---------- Projects ---------- */
+  .project{
+    border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    background:var(--surface); margin-bottom:32px;
+  }
+  .project-head{padding:32px 32px 0; }
+  .project-num{font-family:'IBM Plex Mono'; color:var(--accent); font-size:0.85rem;}
+  .project-head h3{font-size:1.5rem; margin-top:8px;}
+  .project-tag{color:var(--muted); font-size:0.92rem; margin-top:6px;}
+  .project-body{padding:20px 32px 8px; color:var(--muted); font-size:1rem;}
+  .project-body p + p{margin-top:14px;}
+  .project-awards{
+    display:flex; gap:10px; flex-wrap:wrap; padding:4px 32px 28px;
+  }
+  .pill{
+    font-size:0.8rem; padding:6px 12px; border-radius:100px;
+    border:1px solid var(--line); color:var(--text); background:var(--surface-2);
+  }
+  .pill.win{border-color:var(--accent-dim); color:var(--accent);}
+  .project-metrics{
+    display:flex; gap:28px; flex-wrap:wrap; padding:0 32px 28px;
+  }
+  .metric-num{font-family:'IBM Plex Mono'; font-size:1.3rem; color:var(--warm);}
+  .metric-label{font-size:0.78rem; color:var(--muted);}
+  .project-gallery{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:var(--line);
+  }
+  .project-gallery img{width:100%; height:220px; object-fit:cover; transition:transform .5s ease;}
+  .project-gallery a{overflow:hidden; display:block;}
+  .project-gallery a:hover img{transform:scale(1.06);}
+  @media (max-width:700px){
+    .project-gallery{grid-template-columns:1fr 1fr;}
+    .project-gallery img{height:160px;}
+  }
+  .stack-row{display:flex; flex-wrap:wrap; gap:8px; padding:0 32px 32px;}
+  .stack-item{font-family:'IBM Plex Mono'; font-size:0.76rem; color:var(--muted); border:1px solid var(--line); padding:4px 10px; border-radius:4px;}
+
+  /* ---------- Skills ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  @media (max-width:760px){ .skills-grid{grid-template-columns:1fr;} }
+  .skill-card h3{font-size:1rem; color:var(--accent); margin-bottom:14px; font-family:'IBM Plex Mono'; font-weight:500;}
+  .skill-card ul{list-style:none; color:var(--muted); font-size:0.96rem;}
+  .skill-card li{padding:7px 0; border-bottom:1px solid var(--line);}
+  .skill-card li:last-child{border-bottom:none;}
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:140px; gap:8px;
+  }
+  .gallery-grid figure{position:relative; overflow:hidden; border-radius:6px; margin:0;}
+  .gallery-grid img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .gallery-grid figure:hover img{transform:scale(1.07);}
+  .gallery-grid figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:10px 12px 8px;
+    font-size:0.76rem; color:#fff; background:linear-gradient(to top, rgba(0,0,0,.72), transparent);
+    opacity:0; transition:opacity .25s ease;
+  }
+  .gallery-grid figure:hover figcaption{opacity:1;}
+  .g1{grid-column:span 3; grid-row:span 2;}
+  .g2{grid-column:span 3; grid-row:span 1;}
+  .g3{grid-column:span 2; grid-row:span 1;}
+  .g4{grid-column:span 2; grid-row:span 1;}
+  .g5{grid-column:span 2; grid-row:span 1;}
+  @media (max-width:700px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
+    .g1{grid-column:span 2; grid-row:span 2;}
+    .g2,.g3,.g4,.g5{grid-column:span 1; grid-row:span 1;}
+  }
+
+  /* ---------- Education ---------- */
+  .edu-card{
+    border:1px solid var(--line); border-radius:10px; padding:32px;
+    display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    background:var(--surface);
+  }
+  .edu-card h3{font-size:1.2rem;}
+  .edu-card .tl-org{margin-bottom:0;}
+  .edu-gpa{text-align:right;}
+  .edu-gpa .stat-num{font-size:1.4rem;}
+
+  /* ---------- Contact / Footer ---------- */
+  .contact{text-align:left;}
+  .contact h2{font-size:clamp(1.8rem,4vw,2.6rem); max-width:16ch;}
+  .contact-links{margin-top:32px; display:flex; gap:20px; flex-wrap:wrap;}
+  footer{
+    border-top:1px solid var(--line); padding:32px 0; color:var(--muted); font-size:0.85rem;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-name">Nora Cojocea-Neagoie</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="horizon-wrap" aria-hidden="true">
+    <svg id="horizon-svg" viewBox="0 0 800 500" fill="none">
+      <circle cx="400" cy="250" r="220" stroke="#233052" stroke-width="1"/>
+      <g id="horizon-group" style="transform-origin:400px 250px;">
+        <rect x="-100" y="250" width="1000" height="400" fill="#101a2e"/>
+        <line x1="-100" y1="250" x2="900" y2="250" stroke="#34d0b6" stroke-width="1.5"/>
+        <line x1="300" y1="180" x2="500" y2="180" stroke="#233052" stroke-width="1"/>
+        <line x1="330" y1="150" x2="470" y2="150" stroke="#233052" stroke-width="1"/>
+        <line x1="300" y1="320" x2="500" y2="320" stroke="#233052" stroke-width="1"/>
+        <line x1="330" y1="350" x2="470" y2="350" stroke="#233052" stroke-width="1"/>
+      </g>
+      <line x1="340" y1="250" x2="460" y2="250" stroke="#f2a93b" stroke-width="2"/>
+      <line x1="400" y1="230" x2="400" y2="270" stroke="#f2a93b" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Charlottesville, VA — Aerospace Engineering & Data Science</div>
+        <h1>Nora Cojocea-Neagoie</h1>
+        <p class="lede">Hardware that survives bad landings. Software that makes data legible. I build passive mechanical systems for aircraft, satellite data pipelines, and tools that make science education more hands-on.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">See my projects</a>
+          <a class="btn btn-ghost" href="Nora-Cojocea-Neagoie-Resume.pdf" target="_blank">Download résumé</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/hero-portrait.jpg" alt="Portrait of Nora Cojocea-Neagoie holding an award at the Regional Science and Engineering Fair" loading="eager">
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">70%→3%</div><div class="stat-label">max incline handled by my landing gear</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">awards at state &amp; regional science fairs</div></div>
+      <div><div class="stat-num">3.56</div><div class="stat-label">GPA, B.S. Aerospace Eng. + Data Science</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="about" class="wrap about">
+    <div class="sec-head">
+      <span class="sec-index">About</span>
+      <h2>Grounded in flight hardware, drawn to the data behind it</h2>
+    </div>
+    <p>I'm a <strong>Bachelor of Science candidate in Aerospace Engineering and Data Science at the University of Virginia</strong> (Class of 2029, GPA 3.56). My path started with NASA's Virginia Aerospace Science and Technology Scholars program, where I worked as a Risk and Radiation Specialist on a hypothetical crewed Mars mission — and it's kept pulling me toward the intersection of physical systems and the data that describes them.</p>
+    <p>Since then I've mentored fellow scholars for NASA's Virginia Space Grant Consortium, built a machine learning model to study satellite propellant consumption at Iridium Communications, and led a 12-person team through the design of a conceptual ice-sheet-tracking satellite. Outside of internships, I'm on the Research and Design team for UVA's Rocketry Club, working on the oxidizer system for a K-class hybrid rocket engine.</p>
+  </section>
+
+  <section id="experience" class="wrap">
+    <div class="sec-head">
+      <span class="sec-index">Experience</span>
+      <h2>Where I've worked and studied</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-date">Aug 2025 — Present</span>
+        <h3>Research and Design Team</h3>
+        <div class="tl-org">Rocketry Club, University of Virginia</div>
+        <ul>
+          <li>Collaborate cross-functionally on the redesign of an oxidizer system and overall design of a K-class hybrid rocket engine</li>
+          <li>Support system-level design, analysis, and verification using CAD modeling and ANSYS CFD</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Jun 2026 — Aug 2026</span>
+        <h3>Intern</h3>
+        <div class="tl-org">NASA's Virginia Space Grant Consortium</div>
+        <ul>
+          <li>Mentored groups of nine scholars as they navigated teamwork in the engineering industry</li>
+          <li>Reviewed and corrected 10+ research papers, proposals, and presentations for technical accuracy as part of a proof-of-concept satellite proposal</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">May 2025 — Jun 2025</span>
+        <h3>Capstone Intern</h3>
+        <div class="tl-org">Iridium Communications, Satellite Network Operations Center</div>
+        <ul>
+          <li>Developed a Python-based machine learning model to analyze satellite propellant-consumption data and identify patterns in fuel usage across orbital maneuvers</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Sep 2024 — Aug 2025</span>
+        <h3>Scholar</h3>
+        <div class="tl-org">NASA's Virginia Earth Science System Scholars</div>
+        <ul>
+          <li>Completed NASA-developed coursework on satellite data tracking and Earth sciences</li>
+          <li>Managed and coordinated a 12-person team through the design and documentation of a conceptual satellite for ice-sheet elevation tracking</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Sep 2023 — Aug 2024</span>
+        <h3>Scholar</h3>
+        <div class="tl-org">NASA's Virginia Aerospace Science and Technology Scholars</div>
+        <ul>
+          <li>Collaborated with a multidisciplinary team to design a hypothetical crewed NASA mission to Mars</li>
+          <li>Served as Risk and Radiation Specialist, researching radiation hazards and mitigation strategies to reduce crew exposure</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="wrap-wide">
+    <div class="wrap" style="padding:0; max-width:none;">
+      <div class="sec-head">
+        <span class="sec-index">Projects</span>
+        <h2>Two problems, two very different fixes</h2>
+      </div>
+    </div>
+
+    <div class="wrap" style="max-width:var(--wide); padding:0 24px;">
+      <article class="project">
+        <div class="project-head">
+          <span class="project-num">01</span>
+          <h3>Adaptive Landing Gear for VTOL Aircraft</h3>
+          <div class="project-tag">Independent research — Virginia State &amp; Regional Science and Engineering Fair, 2024–2025</div>
+        </div>
+        <div class="project-body">
+          <p>Helicopters and drones that land on slopes or debris risk dynamic rollover or propeller strikes — a real problem for search-and-rescue, disaster relief, and urban air mobility, where a flat pad is never guaranteed. Most existing fixes rely on LiDAR or mid-air adjustment, both of which fail when sensors get noisy or the ground shifts after touchdown.</p>
+          <p>I designed a passive, mechanical landing gear that locks on impact rather than adjusting mid-flight, modeled in SolidWorks after the push-button locking mechanism in umbrellas. I ran CFD tests in SimScale to confirm the legs wouldn't disturb the aircraft's aerodynamics, 3D-printed the assembly, then wrote the Arduino-based control logic that decides when to lock the legs. The system needs no LiDAR or IMU — just a single camera — and was flight-tested both indoors and outdoors.</p>
+        </div>
+        <div class="project-metrics">
+          <div><div class="metric-num">70%→3%</div><div class="metric-label">incline reduced to near-level</div></div>
+          <div><div class="metric-num">0</div><div class="metric-label">sensors beyond one camera</div></div>
+        </div>
+        <div class="project-awards">
+          <span class="pill win">1st Place, Leidos Award for Applied Science — VA State Fair</span>
+          <span class="pill win">2nd Place Overall — Regional Science &amp; Engineering Fair</span>
+          <span class="pill win">IT Cadre Award for Innovation</span>
+        </div>
+        <div class="project-gallery">
+          <a href="images/landing-gear-cad.png" target="_blank"><img src="images/landing-gear-cad.png" alt="Exploded SolidWorks CAD render of the locking landing-gear leg mechanism" loading="lazy"></a>
+          <a href="images/landing-gear-prototype.jpg" target="_blank"><img src="images/landing-gear-prototype.jpg" alt="3D-printed landing gear prototype under test on an inclined surface" loading="lazy"></a>
+          <a href="images/landing-gear-drone.jpg" target="_blank"><img src="images/landing-gear-drone.jpg" alt="Consumer drone fitted with the adaptive landing gear, outdoor flight test" loading="lazy"></a>
+        </div>
+        <div class="stack-row">
+          <span class="stack-item">SolidWorks CAD</span>
+          <span class="stack-item">SimScale CFD</span>
+          <span class="stack-item">Arduino / C++</span>
+          <span class="stack-item">3D Printing</span>
+          <span class="stack-item">Data Logging</span>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <span class="project-num">02</span>
+          <h3>Analyze Sports: Data Visualization</h3>
+          <div class="project-tag">Built for Computers for Kids, a data-science nonprofit for ages 11–14</div>
+        </div>
+        <div class="project-body">
+          <p>Computers for Kids runs a tabletop-basketball activity to teach data science to younger students, but logging every shot through a manual Google Form interrupted gameplay and put up a barrier for less tech-savvy players.</p>
+          <p>Our team replaced it with a browser-based app, built in Django and Python, that logs each make or miss by court zone in real time and renders a live shooting-percentage heatmap as the game is played — turning data collection into part of the activity instead of a pause in it.</p>
+        </div>
+        <div class="project-metrics">
+          <div><div class="metric-num">1.34s</div><div class="metric-label">avg. time to log a shot, vs. 4.64s with Google Forms</div></div>
+          <div><div class="metric-num">6</div><div class="metric-label">court zones tracked live</div></div>
+        </div>
+        <div class="project-gallery">
+          <a href="images/sports-app-screenshot.png" target="_blank"><img src="images/sports-app-screenshot.png" alt="Live results screen showing shot zones, makes, and a shooting-percentage heatmap" loading="lazy"></a>
+          <a href="images/sports-chart.png" target="_blank"><img src="images/sports-chart.png" alt="Bar chart comparing time to log a shot: our app versus Google Forms" loading="lazy"></a>
+        </div>
+        <div class="stack-row">
+          <span class="stack-item">Django</span>
+          <span class="stack-item">Python</span>
+          <span class="stack-item">Data Visualization</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <div class="sec-head">
+      <span class="sec-index">Skills</span>
+      <h2>Tools I reach for</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Data &amp; Programming</h3>
+        <ul>
+          <li>Python</li><li>C++</li><li>Java</li><li>Data Analysis</li><li>Data Logging</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Engineering &amp; Simulation</h3>
+        <ul>
+          <li>SolidWorks &amp; AutoCAD</li><li>ANSYS Simulation</li><li>MATLAB</li><li>Arduino IDE &amp; Circuit Design</li><li>3D Printing</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Professional</h3>
+        <ul>
+          <li>Technical Writing</li><li>Project Management</li><li>Public Speaking &amp; Presentation</li><li>Collaboration &amp; Teamwork</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="wrap-wide">
+    <div class="wrap" style="padding:0 24px 40px; max-width:none;">
+      <div class="sec-head" style="margin-bottom:0;">
+        <span class="sec-index">Gallery</span>
+        <h2>From the lab bench to the fair floor</h2>
+      </div>
+    </div>
+    <div class="wrap" style="max-width:var(--wide); padding:0 24px;">
+      <div class="gallery-grid">
+        <figure class="g1"><img src="images/team-hangar.jpg" alt="Team standing in front of a NASA research aircraft in a hangar" loading="lazy"><figcaption>NASA VESS team at a Langley aircraft hangar</figcaption></figure>
+        <figure class="g2"><img src="images/team-group.jpg" alt="Full NASA scholars cohort group photo outdoors" loading="lazy"><figcaption>NASA Virginia scholars cohort</figcaption></figure>
+        <figure class="g3"><img src="images/fair-presenting.jpg" alt="Presenting research to judges at a science fair" loading="lazy"><figcaption>Presenting at the Regional Science &amp; Engineering Fair</figcaption></figure>
+        <figure class="g4"><img src="images/award.jpg" alt="Receiving an award medal at the Regional Science and Engineering Fair" loading="lazy"><figcaption>Receiving the IT Cadre Award for Innovation</figcaption></figure>
+        <figure class="g5"><img src="images/fair-crowd.jpg" alt="Fielding questions from a crowd of judges at a science fair poster session" loading="lazy"><figcaption>Fielding judges' questions on landing-gear performance</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="wrap">
+    <div class="sec-head">
+      <span class="sec-index">Education</span>
+      <h2>Currently studying</h2>
+    </div>
+    <div class="edu-card">
+      <div>
+        <h3>University of Virginia — School of Engineering &amp; Applied Science</h3>
+        <div class="tl-org">B.S. in Aerospace Engineering and Data Science, Class of 2029</div>
+      </div>
+      <div class="edu-gpa">
+        <div class="stat-num">3.56</div>
+        <div class="stat-label">GPA</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap contact">
+    <div class="sec-head">
+      <span class="sec-index">Contact</span>
+      <h2>Let's talk about aircraft, satellites, or data</h2>
+    </div>
+    <p style="color:var(--muted); max-width:52ch;">Open to research collaborations, internships, and conversations about aerospace hardware or applied data science.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:ncojocea1@gmail.com">ncojocea1@gmail.com</a>
+      <a class="btn btn-ghost" href="tel:7033038053">703-303-8053</a>
+      <a class="btn btn-ghost" href="Nora-Cojocea-Neagoie-Resume.pdf" target="_blank">Résumé (PDF)</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© <span id="year"></span> Nora Cojocea-Neagoie</span>
+  <span>Built with HTML, CSS &amp; a little Arduino spirit</span>
+</footer>
+
+<script>
+  // nav shadow on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // one orchestrated hero moment: horizon levels itself on load, echoing the landing-gear project
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const grp = document.getElementById('horizon-group');
+  if (grp && !reduceMotion) {
+    grp.style.transform = 'rotate(-14deg)';
+    grp.style.transition = 'transform 1.6s cubic-bezier(.16,1,.3,1)';
+    requestAnimationFrame(() => {
+      setTimeout(() => { grp.style.transform = 'rotate(0deg)'; }, 150);
+    });
+  }
+</script>
+
+</body>
+</html>
