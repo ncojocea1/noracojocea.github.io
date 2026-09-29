@@ -182,6 +182,17 @@
     .project-gallery{grid-template-columns:1fr 1fr;}
     .project-gallery img{height:160px;}
   }
+    .project-gallery2{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
+    background:var(--line);
+  }
+  .project-gallery2 img{width:100%; aspect-ratio: 1 / 2; object-fit:cover; transition:transform .5s ease;}
+  .project-gallery2 a{overflow:hidden; display:block;}
+  .project-gallery2 a:hover img{transform:scale(1.06);}
+  @media (max-width:700px){
+    .project-gallery2{grid-template-columns:1fr 1fr;}
+    .project-gallery2 img{height:160px;}
+  }
   .stack-row{display:flex; flex-wrap:wrap; gap:8px; padding:0 32px 32px;}
   .stack-item{font-family:'IBM Plex Mono'; font-size:0.76rem; color:var(--muted); border:1px solid var(--line); padding:4px 10px; border-radius:4px;}
 
@@ -416,7 +427,7 @@
           <div><div class="metric-num">1.34s</div><div class="metric-label">avg. time to log a shot, vs. 4.64s with Google Forms</div></div>
           <div><div class="metric-num">6</div><div class="metric-label">court zones tracked live</div></div>
         </div>
-        <div class="project-gallery">
+        <div class="project-gallery2">
           <a href="Images/C4K Project.png" target="_blank"><img src="Images/C4K Project.png" alt="Live results screen showing shot zones, makes, and a shooting-percentage heatmap" loading="lazy"></a>
           <a href="Images/CFK Project 2.0.png" target="_blank"><img src="Images/CFK Project 2.0.png" alt="Bar chart comparing time to log a shot: our app versus Google Forms" loading="lazy"></a>
         </div>
@@ -460,16 +471,16 @@
     <div class="wrap" style="padding:0 24px 40px; max-width:none;">
       <div class="sec-head" style="margin-bottom:0;">
         <span class="sec-index">Gallery</span>
-        <h2>From the lab bench to the fair floor</h2>
+        <h2>Photo Gallery</h2>
       </div>
     </div>
     <div class="wrap" style="max-width:var(--wide); padding:0 24px;">
       <div class="gallery-grid">
-        <figure class="g1"><img src="Images/NASA Hanger.jpeg" alt="Team standing in front of a NASA research aircraft in a hangar" loading="lazy"><figcaption>NASA VESS team at a Langley aircraft hangar</figcaption></figure>
-        <figure class="g2"><img src="Images/VSGC Intern.jpeg" alt="Full NASA scholars cohort group photo outdoors" loading="lazy"><figcaption>NASA's Virginia Space Grant Consortium Internship</figcaption></figure>
-        <figure class="g3"><img src="Images/VSSEF Presentation.jpeg" alt="Presenting research to judges at a science fair" loading="lazy"><figcaption>Presenting at the Regional Science &amp; Engineering Fair</figcaption></figure>
+        <figure class="g1"><img src="Images/NASA Hanger.jpeg" alt="Intern group standing in front of a NASA research aircraft in a hangar" loading="lazy"><figcaption>NASA VESS team at a Langley aircraft hangar</figcaption></figure>
+        <figure class="g2"><img src="Images/VSGC Intern.jpeg" alt="VSGC Intern cohort" loading="lazy"><figcaption>NASA's Virginia Space Grant Consortium Internship</figcaption></figure>
+        <figure class="g3"><img src="Images/VSSEF Presentation.jpeg" alt="Presenting research to judges at the Virginia State Science and Engineering Fair" loading="lazy"><figcaption>Presenting at the Regional Science &amp; Engineering Fair</figcaption></figure>
         <figure class="g4"><img src="Images/RSEF Award.jpeg" alt="Receiving an award medal at the Regional Science and Engineering Fair" loading="lazy"><figcaption>Receiving the IT Cadre Award for Innovation</figcaption></figure>
-        <figure class="g5"><img src="Images/RSEF Presenation.jpeg" alt="Fielding questions from a crowd of judges at a science fair poster session" loading="lazy"><figcaption>Fielding judges' questions on landing-gear performance</figcaption></figure>
+        <figure class="g5"><img src="Images/RSEF Presenation.jpeg" alt="Presenting research at Regional Science and Engineering Fair" loading="lazy"><figcaption>Fielding judges' questions on landing-gear performance</figcaption></figure>
       </div>
     </div>
   </section>
@@ -481,11 +492,11 @@
     </div>
     <div class="edu-card">
       <div>
-        <h3>University of Virginia — School of Engineering &amp; Applied Science</h3>
+        <h3>University of Virginia | School of Engineering &amp; Applied Science</h3>
         <div class="tl-org">B.S. in Aerospace Engineering, Class of 2029</div>
       </div>
       <div class="edu-gpa">
-        <div class="stat-num">3.56</div>
+        <div class="stat-num">3.55</div>
         <div class="stat-label">GPA</div>
       </div>
     </div>
@@ -494,13 +505,13 @@
   <section id="contact" class="wrap contact">
     <div class="sec-head">
       <span class="sec-index">Contact</span>
-      <h2>Let's talk about aircraft, satellites, or data</h2>
+      <h2>Let's talk about anything aerospace</h2>
     </div>
-    <p style="color:var(--muted); max-width:52ch;">Open to research collaborations, internships, and conversations about aerospace hardware or applied data science.</p>
+    <p style="color:var(--muted); max-width:52ch;">Please reach out if you any further questions about my work or want to chat! I love to discuss everything happening in the aerospace world today.</p>
     <div class="contact-links">
       <a class="btn btn-primary" href="mailto:ncojocea1@gmail.com">ncojocea1@gmail.com</a>
-      <a class="btn btn-ghost" href="tel:7033038053">703-303-8053</a>
-      <a class="btn btn-ghost" href="Nora-Cojocea-Neagoie-Resume.pdf" target="_blank">Résumé (PDF)</a>
+      <a class="btn btn-ghost" href="tel:7033038053">+1 703-303-8053</a>
+      <a class="btn btn-ghost" href="Nora-Cojocea-Neagoie-Resume.pdf" target="_blank">Resume (PDF)</a>
     </div>
   </section>
 
