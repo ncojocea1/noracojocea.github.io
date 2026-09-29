@@ -10,15 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
---bg:#ffffff;
---surface:#f6f7fb;     /* lighter grey, barely tinted */
---surface-2:#edf0f8;   /* hovers/raised elements */
---line:#cfd5e8;       /* slightly stronger borders so panels stay defined */
---text:#080c1a;        /* darker main text */
---muted:#3f4866;       /* much darker secondary text (was #5a6483) */
---accent:#1e2a5e;      /* navy from your links */
---accent-dim:#3a4a8f;
---warm:#6b4bc0;
+--bg:#070b16;
+--surface:#0f1626;
+--surface-2:#182038;
+--line:#26304f;
+--text:#f2f4fb;
+--muted:#9aa6c4;
+--accent:#7aa2f7;      /* cooler sky blue */
+--accent-dim:#4f74c9;
+--warm:#e9b872;
     --maxw:760px;
     --wide:1080px;
   }
@@ -186,7 +186,7 @@
     display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
     background:var(--line);
   }
-  .project-gallery2 img{width:100%; aspect-ratio: 1 / 2; object-fit:cover; transition:transform .5s ease;}
+  .project-gallery2 img{width:100%; aspect-ratio: 2 / 1; object-fit:cover; transition:transform .5s ease;}
   .project-gallery2 a{overflow:hidden; display:block;}
   .project-gallery2 a:hover img{transform:scale(1.06);}
   @media (max-width:700px){
